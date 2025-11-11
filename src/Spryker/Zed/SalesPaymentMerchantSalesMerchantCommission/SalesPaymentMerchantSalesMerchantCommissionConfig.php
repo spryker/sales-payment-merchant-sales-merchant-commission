@@ -31,19 +31,19 @@ class SalesPaymentMerchantSalesMerchantCommissionConfig extends AbstractBundleCo
     public const PRICE_MODE_GROSS = 'GROSS_MODE';
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected const BASE_AMOUNT_FIELD_GROSS_MODE = ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION;
+    protected const BASE_AMOUNT_FIELD_GROSS_MODE = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected const BASE_AMOUNT_FIELD_NET_MODE = ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION;
+    protected const BASE_AMOUNT_FIELD_NET_MODE = null;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected const BASE_AMOUNT_FIELD_FOR_REVERSE_PAYOUT = ItemTransfer::CANCELED_AMOUNT;
+    protected const BASE_AMOUNT_FIELD_FOR_REVERSE_PAYOUT = null;
 
     /**
      * @var array<string, array<string, bool>>
@@ -79,7 +79,11 @@ class SalesPaymentMerchantSalesMerchantCommissionConfig extends AbstractBundleCo
      */
     public function getBaseAmountFieldForGrossMode(): string
     {
-        return static::BASE_AMOUNT_FIELD_GROSS_MODE;
+        if (static::BASE_AMOUNT_FIELD_GROSS_MODE) {
+            return static::BASE_AMOUNT_FIELD_GROSS_MODE;
+        }
+
+        return ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION;
     }
 
     /**
@@ -93,7 +97,11 @@ class SalesPaymentMerchantSalesMerchantCommissionConfig extends AbstractBundleCo
      */
     public function getBaseAmountFieldForNetMode(): string
     {
-        return static::BASE_AMOUNT_FIELD_NET_MODE;
+        if (static::BASE_AMOUNT_FIELD_NET_MODE) {
+            return static::BASE_AMOUNT_FIELD_NET_MODE;
+        }
+
+        return ItemTransfer::SUM_PRICE_TO_PAY_AGGREGATION;
     }
 
     /**
@@ -107,6 +115,10 @@ class SalesPaymentMerchantSalesMerchantCommissionConfig extends AbstractBundleCo
      */
     public function getBaseAmountFieldForReversePayout(): string
     {
-        return static::BASE_AMOUNT_FIELD_FOR_REVERSE_PAYOUT;
+        if (static::BASE_AMOUNT_FIELD_FOR_REVERSE_PAYOUT) {
+            return static::BASE_AMOUNT_FIELD_FOR_REVERSE_PAYOUT;
+        }
+
+        return ItemTransfer::CANCELED_AMOUNT;
     }
 }
