@@ -19,20 +19,12 @@ abstract class AbstractPayoutAmountCalculator implements PayoutAmountCalculatorS
      */
     protected SalesPaymentMerchantSalesMerchantCommissionConfig $config;
 
-    /**
-     * @param \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\SalesPaymentMerchantSalesMerchantCommissionConfig $config
-     */
     public function __construct(
         SalesPaymentMerchantSalesMerchantCommissionConfig $config
     ) {
         $this->config = $config;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return string
-     */
     protected function getPriceMode(OrderTransfer $orderTransfer): string
     {
         $priceMode = $orderTransfer->getPriceModeOrFail();
@@ -43,12 +35,6 @@ abstract class AbstractPayoutAmountCalculator implements PayoutAmountCalculatorS
         return $this->config::PRICE_MODE_GROSS;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $payoutAmount
-     *
-     * @return int
-     */
     protected function applyCommission(ItemTransfer $itemTransfer, int $payoutAmount): int
     {
         $commissionAmount = $itemTransfer->getMerchantCommissionAmountFullAggregation() ?? 0;
@@ -56,12 +42,6 @@ abstract class AbstractPayoutAmountCalculator implements PayoutAmountCalculatorS
         return $payoutAmount - $commissionAmount;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param int $payoutAmount
-     *
-     * @return int
-     */
     protected function applyReverseCommission(ItemTransfer $itemTransfer, int $payoutAmount): int
     {
         $commissionRefundedAmount = $itemTransfer->getMerchantCommissionRefundedAmount() ?? 0;
@@ -69,13 +49,6 @@ abstract class AbstractPayoutAmountCalculator implements PayoutAmountCalculatorS
         return $payoutAmount - $commissionRefundedAmount;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param int $payoutAmount
-     *
-     * @return int
-     */
     protected function applyTaxDeduction(
         ItemTransfer $itemTransfer,
         OrderTransfer $orderTransfer,
@@ -93,13 +66,6 @@ abstract class AbstractPayoutAmountCalculator implements PayoutAmountCalculatorS
         return $payoutAmount;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     * @param int $payoutAmount
-     *
-     * @return int
-     */
     protected function applyReverseTaxDeduction(
         ItemTransfer $itemTransfer,
         OrderTransfer $orderTransfer,

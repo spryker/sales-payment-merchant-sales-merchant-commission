@@ -41,11 +41,6 @@ class SalesPaymentMerchantSalesMerchantCommissionBusinessTester extends Actor
      */
     protected const STORE_NAME = 'DE';
 
-    /**
-     * @param bool $isGrossPriceMode
-     *
-     * @return \Generated\Shared\Transfer\ItemTransfer
-     */
     public function createItemTransfer(bool $isGrossPriceMode = false): ItemTransfer
     {
         return (new ItemBuilder([
@@ -56,11 +51,6 @@ class SalesPaymentMerchantSalesMerchantCommissionBusinessTester extends Actor
         ]))->build();
     }
 
-    /**
-     * @param bool $isGrossMode
-     *
-     * @return \Generated\Shared\Transfer\OrderTransfer
-     */
     public function createOrderTransfer(bool $isGrossMode = false): OrderTransfer
     {
         return (new OrderBuilder([

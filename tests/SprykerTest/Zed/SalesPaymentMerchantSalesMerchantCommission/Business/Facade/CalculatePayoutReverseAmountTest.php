@@ -81,9 +81,6 @@ class CalculatePayoutReverseAmountTest extends Unit
         ];
     }
 
-    /**
-     * @return void
-     */
     public function testCalculatePayoutReverseAmountThrowsExceptionWhenBaseAmountFieldForReversePayoutNotSet(): void
     {
         // Arrange

@@ -13,12 +13,6 @@ use Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Exception\B
 
 class PayoutAmountNetModeCalculator extends AbstractPayoutAmountCalculator
 {
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return int
-     */
     public function calculatePayoutAmount(ItemTransfer $itemTransfer, OrderTransfer $orderTransfer): int
     {
         $payoutAmount = $this->getBaseAmount($itemTransfer);
@@ -44,12 +38,6 @@ class PayoutAmountNetModeCalculator extends AbstractPayoutAmountCalculator
         return $itemTransfer->offsetGet($this->config->getBaseAmountFieldForNetMode());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return bool
-     */
     public function isApplicable(ItemTransfer $itemTransfer, OrderTransfer $orderTransfer): bool
     {
         return $this->getPriceMode($orderTransfer) === $this->config::PRICE_MODE_NET;

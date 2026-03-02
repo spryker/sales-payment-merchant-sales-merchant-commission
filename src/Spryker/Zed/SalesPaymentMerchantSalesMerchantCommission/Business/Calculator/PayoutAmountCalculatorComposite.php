@@ -26,12 +26,6 @@ class PayoutAmountCalculatorComposite implements PayoutAmountCalculatorInterface
         $this->payoutAmountCalculatorStrategies = $payoutAmountCalculatorStrategies;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return int
-     */
     public function calculatePayoutAmount(ItemTransfer $itemTransfer, OrderTransfer $orderTransfer): int
     {
         $payoutAmountCalculatorStrategy = $this->resolvePayoutAmountCalculatorStrategy($itemTransfer, $orderTransfer);

@@ -20,9 +20,6 @@ use Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\
  */
 class SalesPaymentMerchantSalesMerchantCommissionBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\PayoutAmountCalculatorInterface
-     */
     public function createPayoutAmountCalculatorComposite(): PayoutAmountCalculatorInterface
     {
         return new PayoutAmountCalculatorComposite($this->getPayoutAmountCalculatorStrategies());
@@ -39,9 +36,6 @@ class SalesPaymentMerchantSalesMerchantCommissionBusinessFactory extends Abstrac
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\PayoutAmountCalculatorInterface
-     */
     public function createPayoutReverseAmountCalculatorComposite(): PayoutAmountCalculatorInterface
     {
         return new PayoutAmountCalculatorComposite($this->getPayoutReverseAmountCalculatorStrategies());
@@ -57,25 +51,16 @@ class SalesPaymentMerchantSalesMerchantCommissionBusinessFactory extends Abstrac
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\PayoutAmountCalculatorStrategyInterface
-     */
     public function createPayoutAmountGrossModeCalculator(): PayoutAmountCalculatorStrategyInterface
     {
         return new PayoutAmountGrossModeCalculator($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\PayoutAmountCalculatorStrategyInterface
-     */
     public function createPayoutAmountNetModeCalculator(): PayoutAmountCalculatorStrategyInterface
     {
         return new PayoutAmountNetModeCalculator($this->getConfig());
     }
 
-    /**
-     * @return \Spryker\Zed\SalesPaymentMerchantSalesMerchantCommission\Business\Calculator\PayoutAmountCalculatorStrategyInterface
-     */
     public function createPayoutReverseAmountModeCalculator(): PayoutAmountCalculatorStrategyInterface
     {
         return new PayoutReverseAmountModeCalculator($this->getConfig());

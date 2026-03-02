@@ -69,9 +69,6 @@ class CalculatePayoutAmountTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCalculatePayoutAmountThrowsExceptionWhenTaxIsNotProvided(): void
     {
         // Arrange

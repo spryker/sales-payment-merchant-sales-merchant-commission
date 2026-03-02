@@ -12,12 +12,6 @@ use Generated\Shared\Transfer\OrderTransfer;
 
 class PayoutReverseAmountModeCalculator extends AbstractPayoutAmountCalculator
 {
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return int
-     */
     public function calculatePayoutAmount(ItemTransfer $itemTransfer, OrderTransfer $orderTransfer): int
     {
         $payoutReverseAmount = $this->getBaseReverseAmount($itemTransfer);
@@ -27,12 +21,6 @@ class PayoutReverseAmountModeCalculator extends AbstractPayoutAmountCalculator
         return $payoutReverseAmount;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     * @param \Generated\Shared\Transfer\OrderTransfer $orderTransfer
-     *
-     * @return bool
-     */
     public function isApplicable(ItemTransfer $itemTransfer, OrderTransfer $orderTransfer): bool
     {
         return true;
